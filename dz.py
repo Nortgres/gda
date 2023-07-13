@@ -7,8 +7,8 @@ from time import sleep
 а так же как сделать так чтобы при вызове функции каждый раз правда указывалось текущее время"""
 
 
-def time_now(msg, *, dt=datetime.now()):
-    if dt!=None:
+def time_now(msg, *, dt=None):
+    if dt==None:
         dt = datetime.now()
     print(msg, dt)
 
