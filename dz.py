@@ -12,7 +12,6 @@ def time_now(msg, *, dt=None):
         dt = datetime.now()
     print(msg, dt)
 
-
 # Тесты
 time_now('Сейчас такое время: ')
 sleep(1)
