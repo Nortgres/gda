@@ -17,8 +17,6 @@ class CarClass:
         else:
             self.odometr += km
             print(f'Новый пробег {self.odometr} км')
-
-<<<<<<< HEAD
     def move(self, km):
         if km <= 0:
             print('Недопустимое значение')
@@ -27,8 +25,7 @@ class CarClass:
             self.update_odometr(km)
             print(f'Новый пробег {self.odometr} км')
 
-=======
->>>>>>> origin/main
+
 CarClass.info = "New Описание класса Машина"
 car1 = CarClass('LADA','2109')
 car2 = CarClass('ГАЗ',model=3110)
@@ -36,19 +33,11 @@ car2 = CarClass('ГАЗ',model=3110)
 #car1.vendor = 'LADA'
 #car2.vendor = 'ГАЗ'
 
-<<<<<<< HEAD
-'''print(car1.vendor, car1.model, car1.year)
+
+print(car1.vendor, car1.model, car1.year)
 car2.show_fulname()
 car1.update_odometr(-100)
 car1.update_odometr(200)
 #car1.odometr += 11 #не рекомендуестся
 print(car1.odometr)
-car1.move(500)'''
-=======
-print(car1.vendor, car1.model, car1.year)
-car2.show_fulname()
-car1.update_odometr(-100)
-car1.update_odometr(200)
-car1.odometr += 11 #не рекомендуестся
-print(car1.odometr)
->>>>>>> origin/main
+car1.move(500)
