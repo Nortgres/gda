@@ -193,7 +193,14 @@ list18 = [["Скажи-ка", "дядя", "ведь", "не", "даром"],
           ["Москва", "спаленная", "пожаром"],
           ["Французу", "отдана?"]]
 print(list18)
-j = input('Введите слово: ')
-f = list(filter(lambda x: j in x, list18))
-print(f)
+word = input('Введите слово: ')
+#f = list(filter(lambda x: j in x, list18))
+#print(f)
+data = []
+for i in list18:
+    for j in i:
+        data.append(j)
+result = word in data
+print(result)
+
 ########################################################
