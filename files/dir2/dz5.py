@@ -48,7 +48,7 @@ c = 0
 d = 0
 for i in list2:
     if len(i) >= c:
-        c = len(i)
+        c = len(i.strip())#
         d = list2.index(i)
 print(list2[d])
 print(f'Количество символов: {c}')
@@ -80,9 +80,6 @@ book2 = ' '.join(book2.split('\n'))
 book2 = ' '.join(book2.split(','))
 book2 = ' '.join(book2.split('.'))
 list4 = book2.split(' ')
-f = 0
-g = 0
-h = 0
 k = {}
 for i in list4:
     k[i] = list4.count(i)
