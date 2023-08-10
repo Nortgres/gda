@@ -6,15 +6,19 @@
 -добавьте статический метод info, который бы выводил перечень методов
 '''
 
+
 class Parallelepiped():
-    def __iter__(self):
-        self.a = a
-        self.b = b
-        self.c = c
+    def __init__(self, w, l, h):
+        self.w = w
+        self.l = l
+        self.h = h
+
+    def volume(self):
+        return print({self.w}*{self.l}*{self.h})
 
 
-
-
+p1 = Parallelepiped('2', '3', '4')
+print(p1.volume())
 
 """2)Напишите класс ListWorker
 -принимает в себя неограниченное количество неименованных аргументов и работает с ними как со списком
