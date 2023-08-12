@@ -1,24 +1,32 @@
 # https://docs.google.com/forms/d/e/1FAIpQLSc8O2WF4M4ziAPnWG6dDPqvZ79e0Z23FrGfTCqwKWbhs5SSBA/viewform?usp=sf_link
 
-'''1) Напишите класс с описанием параллелепипеда
+"""1) Напишите класс с описанием параллелепипеда
 -принимает в себя ширину и длинну основания, а так же высоту
 -реализуйте методы для расчета его объема, площади основания и площади боковой стороны
 -добавьте статический метод info, который бы выводил перечень методов
-'''
+"""
 
-
-class Parallelepiped():
+class Parallelepiped:
     def __init__(self, w, l, h):
         self.w = w
         self.l = l
         self.h = h
-
     def volume(self):
-        return print({self.w}*{self.l}*{self.h})
+        return int(self.w) * int(self.l) * int(self.h)
+    def s_osn(self):
+        return int(self.w) * int(self.l)
+    def s_storony(self):
+        return int(self.l) * int(self.h)
+    @staticmethod
+    def info():
+        return dir(Parallelepiped)
 
 
-p1 = Parallelepiped('2', '3', '4')
+p1 = Parallelepiped('3', '3', '4')
 print(p1.volume())
+print(p1.s_osn())
+print(p1.s_storony())
+print(p1.info())
 
 """2)Напишите класс ListWorker
 -принимает в себя неограниченное количество неименованных аргументов и работает с ними как со списком
