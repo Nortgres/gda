@@ -5,7 +5,6 @@
 -реализуйте методы для расчета его объема, площади основания и площади боковой стороны
 -добавьте статический метод info, который бы выводил перечень методов
 """
-'''
 class Parallelepiped:
     def __init__(self, w, l, h):
         self.w = w
@@ -26,7 +25,7 @@ p1 = Parallelepiped('3', '3', '4')
 print(p1.volume())
 print(p1.s_osn())
 print(p1.s_storony())
-print(p1.info())'''
+print(p1.info())
 
 """2)Напишите класс ListWorker
 -принимает в себя неограниченное количество неименованных аргументов и работает с ними как со списком
@@ -37,24 +36,33 @@ print(p1.info())'''
 class ListWorker:
     def __init__(self, *args):
         self.args = args
-        print(args)
     def number(self):
         list1 = []
         for i in (self.args):
-            print(type(i))
-            #if isinstance(i, str):
-            #    list1.append(i)
-        print(list1)
-
-l1 = ListWorker('3', '3', '4', 'aaa', 'bbb', '5', ':')
+            if isinstance(i, int):
+                list1.append(i)
+        return list1
+    def string(self):
+        list2 = []
+        for i in (self.args):
+            if isinstance(i, str):
+                list2.append(i)
+        return list2
+    def other(self):
+        list3 = []
+        for i in (self.args):
+            if not isinstance(i, int) and not isinstance(i, str):
+                list3.append(i)
+        return list3
+l1 = ListWorker(3, 3, 4, 'aaa', 'bbb', 'ccc', 5, 7.5, None)
 print(l1.number())
-
-
+print(l1.string())
+print(l1.other())
 
 """Есть папка которая содержит 100 файлов со случайными цифрами, но в одной из них есть пароль password
 Проверьте все файлы, и найдите пароль. В итоге покажите в консоли номер файла с паролем и содержимое этого файла"""
 
-'''import os
+import os
 
 os.chdir('data')
 pas = 'password'
@@ -64,12 +72,12 @@ for i in os.listdir():
         if l1.count(pas):
             print(i)
             f.seek(0)
-            print(f.read())'''
+            print(f.read())
 
 """Напишите программу которая бы открывала файл и выводила его содержимое. Если попытаться открыть несуществующий файл
 то вместо этого она его создаст и запишет туда слово 'Пусто'"""
 
-'''import os
+import os
 
 filename = input('Введите название файла:')
 try:
@@ -79,4 +87,3 @@ except FileNotFoundError:
     f2 = open(filename, mode='w')
     f2.write(f'Пусто\n')
 f2.close()
-'''
