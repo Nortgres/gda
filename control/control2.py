@@ -5,7 +5,7 @@
 -реализуйте методы для расчета его объема, площади основания и площади боковой стороны
 -добавьте статический метод info, который бы выводил перечень методов
 """
-
+'''
 class Parallelepiped:
     def __init__(self, w, l, h):
         self.w = w
@@ -26,7 +26,7 @@ p1 = Parallelepiped('3', '3', '4')
 print(p1.volume())
 print(p1.s_osn())
 print(p1.s_storony())
-print(p1.info())
+print(p1.info())'''
 
 """2)Напишите класс ListWorker
 -принимает в себя неограниченное количество неименованных аргументов и работает с ними как со списком
@@ -34,7 +34,21 @@ print(p1.info())
     -только числа
     -только строки
     -все кроме чисел и строк"""
-# class ListWorker:
+class ListWorker:
+    def __init__(self, *args):
+        self.args = args
+        print(args)
+    def number(self):
+        list1 = []
+        #list1.append(self.args)
+        for i in (self.args):
+            if isinstance(i, int):
+                list1.append(i)
+        print(list1)
+
+l1 = ListWorker('3', '3', '4', 'aaa', 'bbb', '5', ':')
+print(l1.number())
+
 
 
 """Есть папка которая содержит 100 файлов со случайными цифрами, но в одной из них есть пароль password
