@@ -40,10 +40,10 @@ class ListWorker:
         print(args)
     def number(self):
         list1 = []
-        #list1.append(self.args)
         for i in (self.args):
-            if isinstance(i, int):
-                list1.append(i)
+            print(type(i))
+            #if isinstance(i, str):
+            #    list1.append(i)
         print(list1)
 
 l1 = ListWorker('3', '3', '4', 'aaa', 'bbb', '5', ':')
