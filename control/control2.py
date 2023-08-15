@@ -7,15 +7,15 @@
 """
 class Parallelepiped:
     def __init__(self, w, l, h):
-        self.w = w
-        self.l = l
-        self.h = h
+        self.w = int(w)
+        self.l = int(l)
+        self.h = int(h)
     def volume(self):
-        return int(self.w) * int(self.l) * int(self.h)
+        return self.w * self.l * self.h
     def s_osn(self):
-        return int(self.w) * int(self.l)
+        return self.w * self.l
     def s_storony(self):
-        return int(self.l) * int(self.h)
+        return self.l * self.h
     @staticmethod
     def info():
         return dir(Parallelepiped)
@@ -33,28 +33,29 @@ print(p1.info())
     -только числа
     -только строки
     -все кроме чисел и строк"""
+
 class ListWorker:
     def __init__(self, *args):
         self.args = args
     def number(self):
         list1 = []
-        for i in (self.args):
-            if isinstance(i, int):
+        for i in self.args:
+            if isinstance(i, int): # лучше использовать type == int
                 list1.append(i)
         return list1
     def string(self):
         list2 = []
-        for i in (self.args):
+        for i in self.args:
             if isinstance(i, str):
                 list2.append(i)
         return list2
     def other(self):
         list3 = []
-        for i in (self.args):
+        for i in self.args:
             if not isinstance(i, int) and not isinstance(i, str):
                 list3.append(i)
         return list3
-l1 = ListWorker(3, 3, 4, 'aaa', 'bbb', 'ccc', 5, 7.5, None)
+l1 = ListWorker(3, 3, 4, 'aaa', 'bbb', 'ccc', 5, 7.5, None, True, False)
 print(l1.number())
 print(l1.string())
 print(l1.other())
@@ -73,6 +74,7 @@ for i in os.listdir():
             print(i)
             f.seek(0)
             print(f.read())
+            break
 
 """Напишите программу которая бы открывала файл и выводила его содержимое. Если попытаться открыть несуществующий файл
 то вместо этого она его создаст и запишет туда слово 'Пусто'"""
