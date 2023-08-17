@@ -13,8 +13,7 @@ def flights(request):
     context = {
         'flights': f
     }
-    return render(request, template_name'index.html', context)
-
+    return render(request, 'index.html', context)
 
 def flight(request, flight_id):
     f = Flight.objects.get(pk=flight_id)
