@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Блог</title>
+</head>
+<body>
+    <h1>Мой блог.</h1>
+    <ul>
+        {% for postid in post %}
+        <li>{{ postid }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
