@@ -7,7 +7,7 @@ class Post(models.Model):
     posttext = models.TextField(verbose_name='Текст')
 
     def __str__(self):
-        return f'#Тема: {self.postname} #Текст: {self.posttext} \n'
+        return f'subject: {self.postname} text: {self.posttext} '
 
 
 class Comment(models.Model):
@@ -16,4 +16,4 @@ class Comment(models.Model):
     comment = models.CharField(max_length=200, verbose_name='Комментарий')
 
     def __str__(self):
-        return f'Комментарий: {self.comment} к посту {self.postcomm} \n'
+        return f'Комментарий: {self.comment} к посту {self.postcomm} '
