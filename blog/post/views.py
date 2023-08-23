@@ -18,8 +18,12 @@ def postid(request, post_id):
     return HttpResponse(f)
 
 def comment(request):
-    f = Comment.comment
+    f = Comment.objects.all()
     context = {
         'comment': f
     }
     return render(request, 'index.html', context)
+
+def commentid(request, commentid_id):
+    f = get_object_or_404(Comment, pk=commentid_id)
+    return HttpResponse(f)
