@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Post
+from .models import Post, Comment
 
 
 # Create your views here.
@@ -16,3 +16,10 @@ def post(request):
 def postid(request, post_id):
     f = get_object_or_404(Post, pk=post_id)
     return HttpResponse(f)
+
+def comment(request):
+    f = Comment.comment
+    context = {
+        'comment': f
+    }
+    return render(request, 'index.html', context)
