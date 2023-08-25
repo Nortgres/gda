@@ -1,8 +1,7 @@
 from django.urls import path
 from .views import hello, airports, flight, date_filter
 
-
-app_name = 'flights'
+app_name = 'flight'
 urlpatterns = [
     # path('hello', hello),
     path('', airports, name='airports'),

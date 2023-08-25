@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Фильтр по дате {% endblock %}
+
+{% block body %}
+    <h1>Полеты</h1>
+    <form method="GET" action="{% url  'flights:date_filter'%}">
+        <label>Фильтрация по дате</label>
+        <input type="date" name="start_date" id="start_date">
+        <button type="submit">Подтвердить</button>
+    </form>
+
+{% if date %}
+    <p>Вылеты начиная с {{date}}</p>
+    <ul>
+              {% for flight in flights %}
+                <li> <a href="{% url 'flights:flight' flight.id %}"> {{flight}} </a> </li>
+              {% endfor %}
+    </ul>
+{%endif%}
+{% endblock %}

@@ -1,8 +1,10 @@
 from django.contrib import admin
-from .models import Flight, Airport
+from .models import Flight, Airport, Passenger
 
 # Register your models here.
 admin.site.register(Flight)
+admin.site.register(Passenger)
+
 
 class FlightInline(admin.TabularInline):
     model = Flight
@@ -11,8 +13,5 @@ class FlightInline(admin.TabularInline):
 
 @admin.register(Airport)
 class AirportAdmin(admin.ModelAdmin):
-    list_display = ('name','city')
+    list_display = ('name', 'city')
     inlines = [FlightInline, ]
-
-#
-#admin.site.register(Airport)
