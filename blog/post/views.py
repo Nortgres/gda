@@ -1,14 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Post, Comment
+from .models import Post, Comments
 
 
 # Create your views here.
-def post(request):
+def posts(request):
     f = Post.objects.all()
     # return HttpResponse(f)
     context = {
-        'post': f
+        'posts': f
     }
     return render(request, 'index.html', context)
 
@@ -17,13 +17,10 @@ def postid(request, post_id):
     f = get_object_or_404(Post, pk=post_id)
     return HttpResponse(f)
 
-def comment(request):
-    f = Comment.objects.all()
-    context = {
-        'comment': f
-    }
-    return render(request, 'index.html', context)
+def comments(request):
+    f = Comments.objects.all()
+    return HttpResponse(f)
 
-def commentid(request, commentid_id):
-    f = get_object_or_404(Comment, pk=commentid_id)
+def commentsid(request, comment_id):
+    f = get_object_or_404(Comments, pk=commens_id)
     return HttpResponse(f)

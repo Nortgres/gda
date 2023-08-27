@@ -7,8 +7,12 @@
 <body>
     <h1>Мой блог.</h1>
     <ul>
-        {% for postid in post %}
-            <li>{{ postid  }}</li>
+        {% for post in posts %}
+        <br>
+          <li>{{ post }}</li>
+            {% for comments in post.get_comments %}
+                <li>{{ comments }}</li>
+            {% endfor %}
         {% endfor %}
     </ul>
 </body>

@@ -7,15 +7,15 @@ class Post(models.Model):
     posttext = models.TextField(verbose_name='Текст')
 
     def __str__(self):
-        return f'subject: {self.postname} text: {self.posttext} '
+        return f'subject: {self.postname} text: {self.posttext}'
 
-    #def get_comments(self):
-    #    return self.comment_postcomment.all()
+    def get_comments(self):
+        return self.Comments.comment.all()
 
 
-class Comment(models.Model):
+class Comments(models.Model):
     postcomm = models.ForeignKey(Post, verbose_name='Комментируемый пост', related_name='comment_postcomment', on_delete=models.CASCADE)
     comment = models.TextField(verbose_name='Комментарий')
 
     def __str__(self):
-        return f'Комментарий: {self.comment} к посту {self.postcomm} '
+        return f'Комментарий: {self.comment}'
