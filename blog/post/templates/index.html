@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Блог</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %} Блог {% endblock %}
+
+{% block body %}
     <h1>Мой блог.</h1>
     <ul>
         {% for post in posts %}
-        <br>
-          <li>{{ post }}</li>
+        <li> <a href="{% url 'postid' post.id %}"> {{ post }} </a> </li>
             {% for comments in post.get_comments %}
-                <li>{{ comments }}</li>
+        <a> {{ comments }} </a>
             {% endfor %}
+        <br>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

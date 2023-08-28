@@ -3,8 +3,8 @@ from .views import posts, postid, comments, commentsid
 
 
 urlpatterns = [
-    path('', posts),
-    path('<int:post_id>', postid),
+    path('', posts, name='posts'),
+    path('<int:post_id>', postid, name='postid'),
     path('', comments),
     path('<int:comment_id>', commentsid)
 ]

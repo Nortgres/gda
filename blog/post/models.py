@@ -10,7 +10,7 @@ class Post(models.Model):
         return f'subject: {self.postname} text: {self.posttext}'
 
     def get_comments(self):
-        return self.Comments.comment.all()
+        return self.comment_postcomment.all()
 
 
 class Comments(models.Model):
@@ -18,4 +18,4 @@ class Comments(models.Model):
     comment = models.TextField(verbose_name='Комментарий')
 
     def __str__(self):
-        return f'Комментарий: {self.comment}'
+        return f'Текст комментария: {self.comment}'

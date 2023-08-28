@@ -15,7 +15,11 @@ def posts(request):
 
 def postid(request, post_id):
     f = get_object_or_404(Post, pk=post_id)
-    return HttpResponse(f)
+    context = {
+        'postid': f
+    }
+    #return HttpResponse(f)
+    return render(request, 'post.html', context)
 
 def comments(request):
     f = Comments.objects.all()
