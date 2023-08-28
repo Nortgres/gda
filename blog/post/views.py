@@ -25,6 +25,17 @@ def comments(request):
     f = Comments.objects.all()
     return HttpResponse(f)
 
-def commentsid(request, comment_id):
-    f = get_object_or_404(Comments, pk=commens_id)
-    return HttpResponse(f)
+def date_filter(request):
+    start_date = request.GET.get('start_date')
+    filter_type = request.GET.get('filter_type')
+    f = None
+    if start_date:
+        if filter_type == 'gte':
+            f = Post.objects.filter(created__gte=start_date)
+        elif filter_type == 'lte':
+            f = Post.objects.filter(created__lte=start_date)
+    context = {
+        'posts': f,
+        'date': start_date
+    }
+    return render(request, 'date_filter.html', context)

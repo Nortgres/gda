@@ -4,6 +4,9 @@
 
 {% block body %}
     <h1> Пост {{postid.id}}</h1>
-    <h1> Пост {{postid}}</h1>
-    <a href="{% url 'posts'%}"> Вернуться назад </a>
+    <h1> {{postid}}</h1>
+        {% for comments in postid.get_comments %}
+            <p>{{ comments }} </p>
+        {% endfor %}
+    <a href="{% url 'posts:posts'%}"> Вернуться назад </a>
 {% endblock %}

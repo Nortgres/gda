@@ -3,8 +3,8 @@
 {% block title %} Фильтр по дате {% endblock %}
 
 {% block body %}
-    <h1>Полеты</h1>
-    <form method="GET" action="{% url  'flights:date_filter'%}">
+    <h1>Посты</h1>
+    <form method="GET" action="{% url  'posts:date_filter'%}">
         <label>Фильтрация по дате</label>
         <input type="date" name="start_date" id="start_date">
         <button type="submit">Подтвердить</button>
@@ -12,16 +12,16 @@
 
 {% if date %}
     {% if filter_type == 'gte' %}
-    <p>Вылеты начиная с {{date}}</p>
+    <p>Посты начиная с {{date}}</p>
     {% endif %}
 
     {% if filter_type == 'lte' %}
-    <p>Вылеты до {{date}}</p>
+    <p>Посты до {{date}}</p>
     {% endif %}
 
     <ul>
-              {% for flight in flights %}
-                <li> <a href="{% url 'flights:flight' flight.id %}"> {{flight}} </a> </li>
+              {% for post in posts %}
+                <li> <a href="{% url 'posts:postid' post.id %}"> {{post}} </a> </li>
               {% endfor %}
     </ul>
 {%endif%}
