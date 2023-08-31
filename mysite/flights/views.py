@@ -5,7 +5,34 @@ from .models import Flight, Airport
 
 # Create your views here.
 def hello(request):
-    return HttpResponse('hello')
+    #all_objs = Flight.objects.all()     #[1:3] можно сделать срез
+    #first_objs = Flight.objects.first()
+    #print(first_objs)
+    #ordered_obj = Flight.objects.order_by('duration') #можно сделать с минусом для обратной сортировки
+    #ordered_obj = Flight.objects.order_by('-duration').first()
+    #print(ordered_obj)
+    #get_obj = Flight.objects.get(id=1)
+
+    #my_airport = Airport.objects.get(name='Пулково')
+    #get_airports_flights = Flight.objects.filter(destination=my_airport)# или использовать id
+    #print(get_airports_flights)
+
+    #get_exclude_airports = Flight.objects.filter(origin=2).exclude(destination=1)
+    #print(get_exclude_airports)
+
+    #my_airport1 = Airport.objects.get(name='Пулково')
+    #my_airport2 = Airport.objects.get(name='Хитроу')
+    #f = Flight.objects.create(origin=my_airport1, destination=my_airport2, duration=2)
+    #print(f)
+
+    #f = Flight.objects.get(id=1)
+    #f.duration = 200
+    #f.save()
+    #print(f)
+
+    #Flight.objects.get(id=1).delete()
+
+    return HttpResponse('success')
 
 
 def airports(request):
@@ -22,6 +49,9 @@ def flight(request, flight_id):
     context = {
         'flight': f
     }
+
+    #print(dir(f))
+    print(f.passenger_flights.all())
     return render(request, 'flight.html', context)
 
 def date_filter(request):
