@@ -31,10 +31,10 @@ class Flight(models.Model):
         verbose_name_plural = 'Вылеты'
         ordering = ('origin', 'duration')
 
-class   Passenger(models.Model):
+class Passenger(models.Model):
     name = models.CharField(verbose_name='Имя', max_length=60)
     second_name = models.CharField(verbose_name='Фамилия', max_length=60)
-    flights = models.ManyToManyField(Flight,  verbose_name='Вылеты', related_name='passenger_flights')
+    flights = models.ManyToManyField(Flight, verbose_name='Вылеты', related_name='passanger_flights')
 
     def __str__(self):
         return f'{self.name} {self.second_name}'

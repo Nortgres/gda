@@ -6,8 +6,8 @@
     <h1>Полет {{flight.id}}</h1>
     <h1>Полет {{flight}}</h1>
     <ul>
-    {% for passenger in flight.passenger_flight.all %}
-        <li>{{ passenger }}</li>
+    {% for passanger in flight.passanger_flights.all %}
+        <li> {{ passanger }}</li>
     {% endfor %}
     </ul>
     <a href="{% url 'flights:airports'%}">  Вернуться назад </a>

@@ -44,14 +44,13 @@ def airports(request):
 
 
 def flight(request, flight_id):
-    #f = Flight.objects.get(pk=flight_id)
+    # f = Flight.objects.get(pk=flight_id)
     f = get_object_or_404(Flight, pk=flight_id)
     context = {
         'flight': f
     }
-
+    #print(f.passanger_flights.all())
     #print(dir(f))
-    print(f.passenger_flights.all())
     return render(request, 'flight.html', context)
 
 def date_filter(request):
