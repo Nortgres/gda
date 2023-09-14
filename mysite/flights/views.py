@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Flight, Airport
+from .models import Flight, Airport, Passenger
 
 
 # Create your views here.
@@ -31,9 +31,28 @@ def hello(request):
     #print(f)
 
     #Flight.objects.get(id=1).delete()
+    """Airport.objects.bulk_create([
+        Airport(name='Иваново', city='Иваново'),
+        Airport(name='Внуково', city='Москва')
+    ])"""
+    #print(Airport.objects.get_or_create(name='Иваново', city='Иваново'))
+
+    ##my_airport = Airport.objects.get(name='Шереметьево')
+    ##get_airports_flight = Flight.objects.filter(origin=my_airport)
+    ##print(get_airports_flight)
+    ##get_passenger = Passenger.objects.filter(flights=get_airports_flight)
+
+
+#    my_airport = Airport.objects.get(name='Шереметьево')
+#    res = Passenger.objects.filter(flights__origin=my_airport)
+#    print(res)
+#    return HttpResponse('success')
+
+#   my_airport = Airport.objects.get(name='Шереметьево')
+#   res = Passenger.objects.filter(flights__origin=my_airport)[:3]
+#    return HttpResponse(res)
 
     return HttpResponse('success')
-
 
 def airports(request):
     f = Airport.objects.all()
@@ -67,3 +86,11 @@ def date_filter(request):
         'date': start_date
     }
     return render(request, 'date_filter.html', context)
+
+def passanger(request, slug):
+    p = Passenger.objects.get(slug=slug)
+
+    context = {
+        'passanger' : p
+    }
+    return HttpResponse(p)
