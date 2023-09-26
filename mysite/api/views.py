@@ -5,11 +5,14 @@ from .serializers import FlightSerializer, PassengerSerializer, FeedbackSerializ
 from rest_framework.mixins import CreateModelMixin
 from api.models import Feedback
 from api.utils import query_debugger
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 
 class FlightViewset(viewsets.ModelViewSet):  # CRUD
     queryset = Flight.objects.all().select_related('origin', 'destination')  # prefetch_related для ManyToMany
     serializer_class = FlightSerializer
+    #permission_classes = [IsAuthenticated, IsAdminUser]
 
     @query_debugger
     def list(self, request, *args, **kwargs):
@@ -40,3 +43,9 @@ class AirportViewset(viewsets.ModelViewSet):
 class SecurityViewset(viewsets.ModelViewSet):
     queryset = Security.objects.all()
     serializer_class = SecuritySerializer
+    permission_classes = [IsAuthenticated, IsAdminUser]
+    def list(self, request, *args, **kwargs):
+        if request.user.is_superuser:
+            return super(SecurityViewset, self).list(request, *args, **kwargs)
+        else:
+            return Response('Доступно только админу')
