@@ -40,3 +40,16 @@ class Passenger(models.Model):
 
     def __str__(self):
         return f'{self.name} {self.second_name}'
+
+class Security(models.Model):
+    name = models.CharField(verbose_name='Имя', max_length=60)
+    second_name = models.CharField(verbose_name='Фамилия', max_length=60)
+    post = models.CharField(verbose_name='Должность', max_length=60)
+
+    class Meta:
+        verbose_name = 'Сотрудник службы безопасности'
+        verbose_name_plural = 'Сотрудники службы безопасности'
+        ordering = ('name', 'second_name')
+
+    def __str__(self):
+        return f'{self.name} {self.second_name} {self.post}'

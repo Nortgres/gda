@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Flight, Airport, Passenger
+from .models import Flight, Airport, Passenger, Security
 
 
 # Create your views here.
@@ -92,5 +92,13 @@ def passanger(request, slug):
 
     context = {
         'passanger' : p
+    }
+    return HttpResponse(p)
+
+def security(request, slug):
+    p = Security.objects.get(slug=slug)
+
+    context = {
+        'security' : p
     }
     return HttpResponse(p)

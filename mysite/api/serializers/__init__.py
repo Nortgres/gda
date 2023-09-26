@@ -1,4 +1,5 @@
-from .flight_serializer import FlightSerializer
+from .flight_serializer import FlightSerializer, FlightShortSerializer
 from .airport_serializer import AirportSerializer
-from .passenger_serializer import PassengerSerializer
-from .feedback_serilizer import FeedbackSerializer
+from .passenger_serializer import PassengerSerializer, PassengerListSerializer
+from .feedback_serializer import FeedbackSerializer
+from .security_serializer import SecuritySerializer

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Flight, Airport, Passenger
+from .models import Flight, Airport, Passenger, Security
 
 # Register your models here.
 admin.site.register(Flight)
@@ -20,3 +20,6 @@ class AirportAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug':('name', 'second_name')
     }
+@admin.register(Security)
+class AirportAdmin(admin.ModelAdmin):
+    list_display = ('name', 'second_name', 'post')
