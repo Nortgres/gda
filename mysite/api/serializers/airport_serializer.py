@@ -12,7 +12,13 @@ class AirportSerializer(serializers.ModelSerializer):
 
         return data
 
-
+    def validate_city(self, value):
+        for i in value:
+            if i.isnumeric():
+                raise serializers.ValidationError('В названии города могут содержаться только буквы')
+        return value
+    def validate_name(self, value):
+        return value.title()
 
     class Meta:
         model = Airport

@@ -3,3 +3,4 @@ from .airport_serializer import AirportSerializer
 from .passenger_serializer import PassengerSerializer, PassengerListSerializer
 from .feedback_serializer import FeedbackSerializer
 from .security_serializer import SecuritySerializer
+from .user_serializer import UserSerializer
