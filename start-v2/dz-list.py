@@ -142,14 +142,18 @@ num3 = list(map(int, input('Введите числа третьей строк�
 list28 = [num1[-1], num2[-1], num3[-1]]
 print(*list28)
 
-#задание 3.26
+#задание 3.27
 list29 = [["Скажи-ка", "дядя", "ведь", "не", "даром"],
           ["Москва", "спаленная", "пожаром"],
           ["Французу", "отдана?"]]
 word = input('Введите слово: ')
-data = []
-for i in list29:
-    for j in i:
-        data.append(j)
-print(word in data)
+#data = []
+#for i in list29:
+#    for j in i:
+#        data.append(j)
+#print(word in data)
+condition = word in list29[0] or \
+            word in list29[1] or \
+            word in list29[2]
+print(condition)
 '''
