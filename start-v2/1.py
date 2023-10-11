@@ -42,4 +42,19 @@ tuple12 = tuple(map(int, input('Введите первый набор чисе�
 tuple13 = tuple(map(int, input('Введите первый набор чисел: ').split()))
 tuple14 = (tuple11, tuple12, tuple13)
 print(tuple14[0][-1]+tuple14[1][-1]+tuple14[2][-1])
+
+#задание 4.9
+tuple15 = tuple(map(float, input('Введите длину, ширину и высоту параллелепипеда: ').split()))
+volume = tuple15[0]*tuple15[1]*tuple15[2]
+n = round(volume, 2)
+print(f'{n:_}')
 '''
+#задание 4.10
+tuple16 = tuple(map(int, input('Введите первый набор чисел: ').split()))
+tuple17 = tuple(map(int, input('Введите первый набор чисел: ').split()))
+tuple18 = tuple(map(int, input('Введите первый набор чисел: ').split()))
+tuple19 = (tuple16, tuple17, tuple18)
+x1 = sum(tuple19[0])/len(tuple19[0])
+x2 = sum(tuple19[1])/len(tuple19[1])
+x3 = sum(tuple19[2])/len(tuple19[2])
+print(f'{round(x1, 1)} {round(x2, 1)} {round(x3, 1)}')
