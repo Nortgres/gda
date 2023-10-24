@@ -141,25 +141,18 @@ d, m = map(int, input('Введите число и порядковый ном�
 m2 = m - 1
 if d != 1 and d != 28 and d != 30 and d != 31:
     print(f'{d-1}.{m} {d+1}.{m}')
-    print('test1')
-elif d == 1 and m2 == 1 or m2 == 3 or m2 == 5 or m2 == 7 or m2 == 8 or m2 == 10 or m2 == 12:
+elif d == 1 and (m2 == 1 or m2 == 3 or m2 == 5 or m2 == 7 or m2 == 8 or m2 == 10 or m2 == 12):
     print(f'31.{m2} {d+1}.{m}')
-    print('test2')
-elif d == 1 and m2 == 4 or m2 == 6 or m2 == 9 or m2 == 11:
+elif d == 1 and (m2 == 4 or m2 == 6 or m2 == 9 or m2 == 11):
     print(f'30.{m2} {d+1}.{m}')
-    print('test3')
 elif d == 1 and m2 == 2:
     print(f'28.{m2} {d+1}.{m}')
-    print('test4')
-elif d == 31 and m == 1 or m == 3 or m == 5 or m == 7 or m == 8 or m == 10 or m == 12:
+elif d == 31 and (m == 1 or m == 3 or m == 5 or m == 7 or m == 8 or m == 10 or m == 12):
     print(f'{d-1}.{m} 1.{m+1}')
-    print('test5')
-elif d == 30 and m == 4 or m == 6 or m == 9 or m == 11:
-    print(f'{d-1}.{m} t 1.{m+1}')
-    print('test6')
+elif d == 30 and (m == 4 or m == 6 or m == 9 or m == 11):
+    print(f'{d-1}.{m} 1.{m+1}')
 elif d == 28 and m == 2:
     print(f'{d-1}.{m} 1.{m+1}')
-    print('test7')
 
 # Задание 5.17.
 k = int(input('Введите число 1 <= k <= 365: '))
