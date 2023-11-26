@@ -217,7 +217,7 @@ x2 = {'baz', 'qux', 'quux'}
 # задача 8.10
 city1 = set(input('Введите города: ').split())
 city2 = set(input('Введите города: ').split())
-print('Yes' if city1 == city2 else 'No')
+print('Yes' if city1 == city2 else 'No')print('Yes' if city1 == city2 else 'No')
 
 #задача 8.11
 num1 = set(map(int, (input('Введите список оценок: ').split())))
