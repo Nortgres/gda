@@ -199,9 +199,70 @@ num_unq(lst1)
 print(lst2)
 '''
 # Задание 9.20
+'''
 text = input('Введите текст: ')
 def text_sort(text):
     words = text.split('-')
     words.sort()
     return '-'.join(words)
 print(text_sort(text))
+'''
+# Задание 9.21
+# не решил!!!
+
+# Задание 9.22
+'''
+def rectangle(x, y, type=0):
+    if type == 0:
+        return (x + y)*2
+    else:
+        return x * y
+
+
+num = list(map(int, (input('Введите числа: ')).split()))
+print(rectangle(*num))
+'''
+# Задание 9.23
+'''
+def check_pass(pas, chars="$%!&@#"):
+    if len(pas) >= 8 and any(char in chars for char in pas):
+        return True
+    else:
+        return False
+
+pas = input('Введите пароль: ')
+print(check_pass(pas))
+'''
+# Задание 9.24
+'''
+def tag1(text, tag='h1'):
+    return f'<{tag}>{text}</{tag}>'
+text1 = input('Input text: ')
+print(tag1(text1))
+print(tag1(text1, 'div'))
+'''
+# Задание 9.25
+'''
+def tag1(text, tag='h1', up=True):
+    if up:
+        return f'<{tag.upper()}>{text}</{tag.upper()}>'
+    return f'<{tag}>{text}</{tag}>'
+
+
+text1 = input('Input text: ')
+print(tag1(text1, 'div'))
+print(tag1(text1, 'div', False))
+'''
+# Задание 9.26
+def check_num(*args):
+    num2 = []
+    for i in args:
+        if i % 2 == 0:
+            num2.append(i)
+            i += 1
+        else:
+            i += 1
+    return num2
+
+num = list(map(int, (input('Введите числа: ')).split()))
+print(*check_num(*num))
