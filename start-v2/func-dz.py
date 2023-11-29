@@ -254,15 +254,23 @@ print(tag1(text1, 'div'))
 print(tag1(text1, 'div', False))
 '''
 # Задание 9.26
+'''
 def check_num(*args):
     num2 = []
     for i in args:
         if i % 2 == 0:
             num2.append(i)
-            i += 1
-        else:
-            i += 1
     return num2
 
 num = list(map(int, (input('Введите числа: ')).split()))
 print(*check_num(*num))
+'''
+# Задание 9.27
+'''
+def max_city(*args):
+    return max(args, key=len)
+
+city = list(input('Введите города: ').split())
+print(max_city(*city))
+'''
+# Задание 9.28
