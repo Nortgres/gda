@@ -274,3 +274,7 @@ city = list(input('Введите города: ').split())
 print(max_city(*city))
 '''
 # Задание 9.28
+
+# Задание 9.36
+fragment_detection = lambda text: 'ra' in text.lower()
+print(fragment_detection(input('Enter word: ')))
