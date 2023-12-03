@@ -7,7 +7,7 @@ def func():
 func()
 print(w)
 '''
-
+'''
 w = 5
 v = 'A'
 #def func():
@@ -46,6 +46,7 @@ def greet_bob(greeter_func):
 #print(greet_bob(say_hello))
 #print(greet_bob(be_awesome))
 '''
+'''
 def parent():
     print("Printing from the parent() function")
 
@@ -57,6 +58,7 @@ def parent():
     second_child()
     first_child()
 parent()
+'''
 '''
 def parent(num):
     def first_child():
@@ -92,9 +94,8 @@ mult_by_5 = multiply(5)
 
 mult_by_7 = multiply(7)
 #print(mult_by_7(10))
-
-# декораторы функций
 '''
+# декораторы функций
 
 def my_decorator(func):
     def wrapper():
@@ -109,20 +110,24 @@ def say_whee():
 say_whee = my_decorator(say_whee)
 #say_whee()
 
-from datetime import datetime
-
-def not_higtht(func):
+#####
+'''
+def not_higth(func):
     def wrapper():
-        if 7 <= datetime.now().hour < 22:
-            func()
-        else:
-            pass
+        #if 7 <= datetime.now().hour < 22:
+        func()
+        #else:
+        #    pass #Тише, соседи спят
     return wrapper
 
-def say_whee2():
+def say_whee():
     print("Whee!")
 
-say_whee2 = my_decorator(say_whee2)
+say_whee = not_higth(say_whee)
+'''
+####
+
+'''
 #say_whee2()
 
 @my_decorator
@@ -139,6 +144,7 @@ def my_decorator(func):
 say_whee()
 
 '''
+'''
 def my_dec(func):
     def wrapper(*args, **kwargs):
         func(*args, **kwargs)
@@ -146,3 +152,4 @@ def my_dec(func):
     return wrapper
 
 #print(return_greeting("Adam"))
+'''
