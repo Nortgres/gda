@@ -96,7 +96,7 @@ mult_by_7 = multiply(7)
 #print(mult_by_7(10))
 '''
 # декораторы функций
-
+'''
 def my_decorator(func):
     def wrapper():
         print("Something is happening before the function is called.")
@@ -108,48 +108,58 @@ def say_whee():
     print("Whee!")
 
 say_whee = my_decorator(say_whee)
-#say_whee()
+say_whee()
 
 #####
-'''
+
+from datetime import datetime
 def not_higth(func):
     def wrapper():
-        #if 7 <= datetime.now().hour < 22:
-        func()
-        #else:
-        #    pass #Тише, соседи спят
+        if 7 <= datetime.now().hour < 22:
+            func()
+        else:
+            pass #Тише, соседи спят
     return wrapper
 
 def say_whee():
     print("Whee!")
 
 say_whee = not_higth(say_whee)
+say_whee()
 '''
-####
 
+####
+# @my_decorator - Это более простая запись say_whee = my_decorator(say_whee)
 '''
-#say_whee2()
+def my_decorator(func):
+    def wrapper(*args, **kwargs):
+        func(*args, **kwargs)
+        func(*args, **kwargs)
+
+    return wrapper
+
 
 @my_decorator
-def say_whee():
-    print("Whee!")
+def greet(name):
+    print(f"Hello {name}")
+
+
+greet('World')
+'''
 
 
 def my_decorator(func):
     def wrapper(*args, **kwargs):
         func(*args, **kwargs)
-        func(*args, **kwargs)
-    return wrapper()
-
-say_whee()
-
-'''
-'''
-def my_dec(func):
-    def wrapper(*args, **kwargs):
-        func(*args, **kwargs)
         return func(*args, **kwargs)
     return wrapper
 
-#print(return_greeting("Adam"))
-'''
+
+@my_decorator
+def return_greeting(name):
+    print("Creating greeting")
+    return f"Hi {name}"
+
+
+hi_adam = return_greeting("Adam")
+print(hi_adam)

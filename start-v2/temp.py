@@ -1,25 +1,31 @@
-'''
-def my_decorator(func):
-    def wrapper():
-        print("Something is happening before the function is called.")
-        func()
-        print("Something is happening after the function is called.")
-    return wrapper
+def decorator1(func):
+    def wrapper1(*args, **kwargs):
+        print("Декоратор 1 до вызова функции")
+        result = func(*args, **kwargs)
+        print("Декоратор 1 после вызова функции")
+        return result
+    return wrapper1
 
-def say_whee():
-    print("Whee!")
+def decorator2(func):
+    def wrapper2(*args, **kwargs):
+        print("Декоратор 2 до вызова функции")
+        result = func(*args, **kwargs)
+        print("Декоратор 2 после вызова функции")
+        return result
+    return wrapper2
 
-say_whee = my_decorator(say_whee)
-'''
+def decorator3(func):
+    def wrapper3(*args, **kwargs):
+        print("Декоратор 3 до вызова функции")
+        result = func(*args, **kwargs)
+        print("Декоратор 3 после вызова функции")
+        return result
+    return wrapper3
 
-def my_decorator(func):
-    def wrapper():
-        print("Something is happening before the function is called.")
-        func()
-        print("Something is happening after the function is called.")
-    return wrapper
+@decorator1
+@decorator2
+@decorator3
+def my_function():
+    print("Выполнение функции")
 
-def say_whee():
-    print("Whee!")
-
-say_whee = my_decorator(say_whee)
+my_function()
