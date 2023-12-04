@@ -116,6 +116,7 @@ Miracle Garden
 Пример вывода:
 <b><i><u>Miracle Garden</u></i></b>
 '''
+'''
 text1 = input("Введите текст: ")
 
 
@@ -155,3 +156,7 @@ def dec_text(text):
 
 
 print(dec_text(text1))
+'''
+a, b = map(int, (input('Введите числа: ').split()))
+result = tuple(x*x for x in range(a, b+1))
+print(*result)
