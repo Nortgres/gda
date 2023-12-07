@@ -310,6 +310,7 @@ print(raise_tho(5))
 print(raise_three(5))
 '''
 
+'''
 # Генераторы
 # print(f'{sys.getsizeof([x for x in range(1_000)]):_} bytes')
 # print(f'{sys.getsizeof([x for x in range(1_000_000)]):_} bytes')
@@ -372,3 +373,131 @@ print(next(f))
 
 #while 1:
 #    print(next(f))
+'''
+# Основы функционального программирования
+'''
+numbers = [1, 2, 3, 4, 5]
+squared = []
+#for num in numbers:
+#    squared.append(num ** 2)
+#print(squared)
+
+def squre(number):
+    return number ** 2
+#for num in numbers:
+#    squared.append(squre(num))
+
+#squared = map(squre, numbers)
+squared = map(lambda num: num ** 2, numbers)
+print(list(squared))
+
+base = [5, 5, 7, 10, 10]
+exponent = [3, 4, 2, 2, 3]
+rez = list(map(lambda num, exp: num ** exp, base, exponent))
+print(rez)
+print(list(map(lambda x, y, z: x + y + z, [2, 4, 5], [1, 3], [7, 8, 9])))
+
+string_it = ["processing", "strings", "with", "map"]
+print(list(map(str.capitalize, string_it)))
+print(list(map(str.upper, string_it)))
+print(list(map(str.lower, string_it)))
+
+numders = [1, 2, 3, 4, 5, 6]
+print(list(map(lambda x: (x, x**2, x**3), numders)))
+
+def to_farenheit(c):
+    return 9 / 5 * c + 32
+def to_celsius(f):
+    return (f - 32) * 5 / 9
+celsius_temp = [100, 40, 80]
+print(list(map(to_farenheit, celsius_temp)))
+
+fahr_temps = [212, 104, 176]
+print(list(map(to_celsius, fahr_temps)))
+
+numbers2 = [1, 2, 3, 4, 5, 6]
+print(list(map(lambda x: x ** 2, numbers2)))
+print([x ** 2 for x in numbers2])
+
+numbers3 = [-2, -1, 0, 1, 2]
+def extract_positive(numbers):
+    positive_numbers = []
+    for number in numbers:
+        if number > 0:
+            positive_numbers.append(number)
+    return positive_numbers
+
+print(list(filter(lambda n: n > 0, numbers3)))
+def is_positive(n):
+    return n > 0
+print(list(filter(is_positive, numbers3)))
+
+numbers4 = [1, 3, 10, 45, 6, 50]
+def extract_even(numbers):
+    event_numbers = []
+    for number in numbers:
+        if number % 2 == 0:
+            event_numbers.append(number)
+    return event_numbers
+print(extract_even(numbers4))
+
+print(list(filter(lambda number: number % 2 == 0, numbers4)))
+print([number for number in numbers4 if not number % 2])
+
+words = ("filter", "Ana", "hello", "world", "madam", "racecar")
+print(list(filter(lambda w : w.lower() == "".join(reversed(w)).lower(), words)))
+print([w for w in words if w.lower() == "".join(reversed(w)).lower()])
+print(list(w for w in words if w.lower() == "".join(reversed(w)).lower()))
+
+def my_add(a, b):
+    result = a + b
+    print(f"{a} + {b} = {result}")
+    return result
+print(my_add(5,5))
+
+from functools import reduce
+numbers5 = [0, 1, 2, 3, 4, 5]
+print(reduce(my_add, numbers5))
+print(reduce(lambda a, b: a + b, numbers5))
+
+from operator import add
+print(add(1, 2))
+print(reduce(add, numbers5))
+
+print(reduce(lambda a, b: a * b, numbers5))
+
+numbers6 = [1, 2, 3, 4, 5]
+from operator import mul
+print(mul(2, 2))
+print(reduce(mul, numbers6))
+
+from math import prod
+print(sum(numbers6))
+print(prod(numbers6))
+'''
+
+from functools import reduce
+from timeit import timeit
+
+def add(a, b):
+    return a + b
+use_add = "functools.reduce(add, range(100))"
+##print(timeit(use_add, "import functools", globals={"add": add}))
+use_lambda = "functools.reduce(lambda x, y: x + y, range(100))"
+##print(timeit(use_lambda, "import functools"))
+
+use_operator_add = "functools.reduce(operator.add, range(100))"
+##print(timeit(use_operator_add, "import functools, operator"))
+##print(timeit("sum(range(100))", globals={"sum": sum}))
+
+numbers = [1, 2, 3]
+letters = ['a', 'b', 'c']
+zipped = zip(numbers, letters)
+print(zipped)
+print(type(zipped))
+print(list(zipped))
+
+fields = ['name', 'last_name', 'age', 'job']
+values = ['John', 'Doe', '45', 'Python Developer']
+a_dict = dict(zip(fields,values))
+print(a_dict)

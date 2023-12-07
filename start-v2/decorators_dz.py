@@ -228,8 +228,16 @@ def abc():
         for j in ascii_lowercase:
             yield i+j
 gen = abc()
+
 lst1 = list(gen)
 print(lst1[20:30])
+
+#gen = (x + y for x in ascii_lowercase for y in ascii_lowercase)
+#for _ in range(20):
+#    next(gen)
+    
+#for _ in range(21, 31):
+#    print(next(gen), end=' ')
 '''
 # Задание 10.9
 '''
