@@ -403,6 +403,20 @@ stud_db = list(map(lambda s: s[1].strip(), lst1))
 stud_w = list(map(lambda s: s[2].strip(), lst1))
 print("Как зовут: ", ', '.join(stud_name), "\nРодился: ", ', '.join(stud_db), "\nВесит: ", ', '.join(stud_w))
 '''
+''' #от Олега
+lst, tp = [], ()
+
+while True:
+    entered_users = input('Enter somthing: ').split('#')
+    if entered_users == ['0']:
+        break
+    tp = tuple(map(lambda x: x.strip().replace('kg', ''), entered_users))
+    lst.append(tp)
+names, birth_dates, weights = zip(*lst)
+print(f'Как зовут: {", ".join(i for i in names)}')
+print(f'Родился: {", ".join(i for i in birth_dates)}')
+print(f'Весит: {", ".join(i for i in weights)}')
+'''
 # Задание 10.17.
 '''
 Задание 10.17. На вход поступает список из вещественных чисел, записанных в строку
