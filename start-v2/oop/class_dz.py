@@ -175,7 +175,6 @@ city: 'Иваново'
 Пример вывода:
 False
 '''
-# не решил!
 '''
 class Person:
     name = 'Юрий Тверской'
@@ -184,7 +183,7 @@ class Person:
 
 
 person = Person()
-if hasattr(person, 'job'):
+if hasattr(person.__dict__, 'job'):
     print(True)
 else:
     print(False)
@@ -209,7 +208,7 @@ class MediaPlayer:
         self.filename = file
 
     def play(self):
-        print("Воспроизведение ", self.filename)
+        print("Воспроизведение", self.filename)
 
 media1 = MediaPlayer()
 media2 = MediaPlayer()
@@ -314,7 +313,7 @@ while True:
         tr.add(x, y)
     else:
         break
-
+tr.remove(input("Введите слово для удаления: "))
 print(*tr.translate(input("Введите слово: ")))
 '''
 '''
@@ -345,6 +344,7 @@ p2 = Point(12, 5, 'red')
 увеличением на два для каждой новой точки. Каждый объект следует поместить в
 список points (по порядку). Для второго объекта в списке points укажите цвет 'yellow'.
 '''
+'''
 class Point:
 
     def __init__(self, x, y, color=None):
@@ -361,3 +361,4 @@ for i in range(1000):
     x += 2
     y += 2
 #print(points[999].y)
+'''
