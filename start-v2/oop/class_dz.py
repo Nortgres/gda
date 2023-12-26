@@ -362,3 +362,49 @@ for i in range(1000):
     y += 2
 #print(points[999].y)
 '''
+'''
+Задание 1.14. Объявите три класса геометрических фигур: Line, Rect, Ellipse. Должна быть
+возможность создавать объекты каждого класса следующими командами:
+g1 = Line(a, b, c, d)
+g2 = Rect(a, b, c, d)
+g3 = Ellipse(a, b, c, d)
+Здесь в качестве аргументов a, b, c, d передаются координаты верхнего правого и нижнего
+левого углов (произвольные числа). В каждом объекте координаты должны сохраняться в
+локальных свойствах sp (верхний правый угол) и ep (нижний левый) в виде кортежей (a, b) и
+(c, d) соответственно.
+Сформируйте 217 объектов этих классов: для каждого текущего объекта класс выбирается
+случайно (или Line, или Rect, или Ellipse). Координаты также генерируются случайным
+образом (числовые значения). Все объекты сохраните в списке elements.
+В списке elements обнулите координаты объектов только для класса Line.
+'''
+import random
+class Line:
+    def __init__(self, a, b, c, d):
+        self.sp = (a, b)
+        self.ep = (c, d)
+
+class Rect:
+    def __init__(self, a, b, c, d):
+        self.sp = (a, b)
+        self.ep = (c, d)
+
+class Ellipse:
+    def __init__(self, a, b, c, d):
+        self.sp = (a, b)
+        self.ep = (c, d)
+
+elements = []
+cl_list = ['Line', 'Rect', 'Ellipse']
+
+for i in range(217):
+    cl = random.choice([Line, Rect, Ellipse])
+    a = random.randint(1, 1000)
+    b = random.randint(1, 1000)
+    c = random.randint(1, 1000)
+    d = random.randint(1, 1000)
+    res = cl(a, b, c, d)
+    elements.append(res)
+for i in elements:
+    if isinstance(i, Line):
+        i.sp = (0, 0)
+        i.ep = (0, 0)
