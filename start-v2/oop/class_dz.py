@@ -377,6 +377,7 @@ g3 = Ellipse(a, b, c, d)
 образом (числовые значения). Все объекты сохраните в списке elements.
 В списке elements обнулите координаты объектов только для класса Line.
 '''
+'''
 import random
 class Line:
     def __init__(self, a, b, c, d):
@@ -408,3 +409,252 @@ for i in elements:
     if isinstance(i, Line):
         i.sp = (0, 0)
         i.ep = (0, 0)
+'''
+'''
+Задание 1.15. Объявите класс TriangleChecker, объекты которого можно было бы создавать
+командой: tr = TriangleChecker(a, b, c) Здесь a, b, c - длины сторон треугольника.
+В классе TriangleChecker объявите метод is_triangle(), возвращающий следующие коды:
+1 - если хотя бы одна сторона не число (не float или int) или хотя бы одно число меньше или
+равно нулю;
+2 - указанные числа a, b, c не могут являться длинами сторон треугольника;
+3 - стороны a, b, c образуют треугольник.
+Проверку параметров a, b, c проводить именно в таком порядке.
+Прочитайте из входного потока строку, содержащую три числа, разделенных пробелами,
+командой: a, b, c = map(int, input().split())
+Затем, создайте объект tr класса TriangleChecker и передайте ему прочитанные значения a,
+b, c. Вызовите метод is_triangle() из объекта tr и выведите результат на экран (код, который
+она вернет).
+Пример ввода:
+3 4 5
+Пример вывода:
+3
+'''
+'''
+class TriangleChecker:
+    def __init__(self, a, b, c):
+        self.a = a
+        self.b = b
+        self.c = c
+
+    def is_triangle(self):
+        try:
+            a, b, c = map(float, (self.a, self.b, self.c))
+        except:
+            return 1
+
+        if a <= 0 or b <= 0 or c <= 0:
+            return 1
+
+        if (a + b) <= c or (a + c) <= b or (b + c) <= a:
+            return 2
+        else:
+            return 3
+
+a, b, c = (input("Введите длины сторон треугольника: ")).split()
+tr = TriangleChecker(a, b, c)
+print(tr.is_triangle())
+'''
+'''
+Задание 1.16. Объявите класс AbstractClass, объекты которого нельзя было бы создавать.
+При выполнении команды:
+obj = AbstractClass()
+переменная obj должна ссылаться на строку с содержимым:
+"Ошибка: нельзя создавать объекты абстрактного класса"
+Создайте объект данного класса и выведете его значение на экран.
+Пример ввода:
+Пример вывода:
+Ошибка: нельзя создавать объекты абстрактного класса
+'''
+'''
+class AbstractClass:
+    def __init__(self):
+        print("Ошибка: нельзя создавать объекты абстрактного класса")
+        pass
+obj=AbstractClass()
+'''
+'''
+Задание 1.17. Объявите класс SingletonFive, с помощью которого можно было бы создавать
+объекты командой: a = SingletonFive(<наименование>)
+Здесь <наименование> - это данные, которые сохраняются в локальном свойстве name
+созданного объекта.
+Этот класс должен формировать только первые пять объектов. Остальные (шестой,
+седьмой и т.д.) должны быть ссылкой на последний (пятый) созданный объект.
+Создайте первые десять объектов класса SingletonFive с помощью следующего фрагмента
+программы: objs = [SingletonFive(str(n)) for n in range(10)]
+Выведите созданные объекты с 4 по 7 на экран, каждый объект с новой строки.
+Пример ввода:
+Пример вывода:
+<__main__.SingletonFive object at 0x00000193E243EB00>
+<__main__.SingletonFive object at 0x00000193E243EAA0>
+<__main__.SingletonFive object at 0x00000193E243EAA0>
+<__main__.SingletonFive object at 0x00000193E243EAA0>
+'''
+'''
+class SingletonFive:
+    count = 0
+    n = None
+    def __new__(cls, name):
+        if cls.count < 5:
+            n = super().__new__(cls)
+            cls.count += 1
+            cls.n = n
+            return n
+        else:
+            return cls.n
+
+    def __init__(self, name):
+        self.name = name
+
+objs = [SingletonFive(str(n)) for n in range(10)]
+for obj in objs[3:7]:
+    print(obj)
+'''
+'''
+Задание 1.18. В программе объявлена переменная TYPE_OS и два следующих класса:
+TYPE_OS = 1 # 1 - Windows; 2 - Linux
+class DialogWindows:
+name_class = "DialogWindows"
+class DialogLinux:
+name_class = "DialogLinux"
+Необходимо объявить третий класс с именем Dialog, который бы создавал объекты командой:
+dlg = Dialog(<название>)
+Здесь <название> - это строка, которая сохраняется в локальном свойстве name объекта dlg.
+Класс Dialog должен создавать объекты класса DialogWindows, если переменная TYPE_OS = 1 и
+объекты класса DialogLinux, если переменная TYPE_OS не равна 1. При этом, переменная TYPE_OS
+может меняться в последующих строчках программы. Имейте это в виду, при объявлении класса
+Dialog. Создайте по одному объекту каждого типа и выведите их на экран.
+Пример ввода:
+Пример вывода:
+<__main__.DialogWindows object at 0x000001F75843D0C0>
+<__main__.DialogLinux object at 0x000001F7588AEBC0>
+'''
+'''
+TYPE_OS = 1 # 1 - Windows; 2 - Linux
+class DialogWindows:
+    name_class = "DialogWindows"
+class DialogLinux:
+    name_class = "DialogLinux"
+class Dialog:
+    def __init__(self, name):
+        self.name = name
+        if TYPE_OS == 1:
+            self.dialog = DialogWindows()
+        else:
+            self.dialog = DialogLinux()
+dlg1 = Dialog("test1")
+print(dlg1.dialog)
+TYPE_OS = 2
+dlg2 = Dialog("test2")
+print(dlg2.dialog)
+'''
+'''
+Задание 1.19. Объявите класс Point для представления точек на плоскости. Создавать
+объекты этого класса предполагается командой: pt = Point(x, y)
+Здесь x, y - числовые координаты точки на плоскости (числа), то есть, в каждом объекте
+этого класса создаются локальные свойства x, y, хранящик конкретные координаты точки.
+Необходимо в классе Point реализовать метод clone(self), который бы создавал новый
+объект класса Point как копию текущего объекта с локальными атрибутами x, y и
+соответствующими значениями.
+Создайте в программе объект pt класса Point и еще один объект pt_clone через вызов
+метода clone. Выведите объекты и их атрибуты на экран.
+Пример ввода:
+Пример вывода:
+<__main__.Point object at 0x0000024B1598D630> {'x': 5, 'y': 10}
+<__main__.Point object at 0x0000024B15DFEA40> {'x': 5, 'y': 10}
+'''
+'''
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def clone(self):
+        return Point(self.x, self.y)
+pt = Point(5, 10)
+pt2 = pt.clone()
+print(pt, pt.__dict__)
+print(pt2, pt2.__dict__)
+'''
+'''
+Задание 1.20. В программе предполагается реализовать парсер (обработчик) строки с данными string в
+определенный выходной формат. Для этого объявлен следующий класс:
+class Loader:
+@staticmethod
+def parse_format(string, factory):
+seq = factory.build_sequence()
+for sub in string.split(","):
+item = factory.build_number(sub)
+seq.append(item)
+return seq
+И предполагается его использовать следующим образом: res = Loader.parse_format("1, 2, 3, -5, 10", Factory)
+На выходе (в переменной res) ожидается получать список из набора целых чисел. Для реализации этой идеи
+необходимо вначале программы прописать класс Factory с двумя статическими методами:
+build_sequence() - для создания пустого списка (метод возвращает пустой список);
+build_number(string) - для преобразования строки (string) в целое число (метод возвращает полученное
+целочисленное значение).
+Объявите класс с именем Factory, чтобы получать на выходе искомый результат. Создайте и выведите объект res.
+Пример ввода:
+Пример вывода:
+[1, 2, 3, -5, 10]
+'''
+'''
+class Factory:
+    @staticmethod
+    def build_sequence():
+        return []
+    @staticmethod
+    def build_number(string):
+        return int(string)
+class Loader:
+    @staticmethod
+    def parse_format(string, factory):
+        seq = factory.build_sequence()
+        for sub in string.split(","):
+            item = factory.build_number(sub)
+            seq.append(item)
+        return seq
+
+res = Loader.parse_format("1, 2, 3, -5, 10", Factory)
+print(res)
+'''
+'''
+Задание 1.21. Объявите класс с именем Clock и определите в нем следующие переменные и методы:
+- приватная локальная переменная time для хранения текущего времени, целое число (своя для
+каждого объекта класса Clock с начальным значением 0);
+- публичный метод set_time(tm) для установки текущего времени (присваивает значение tm
+приватному локальному свойству time, если метод check_time(tm) возвратил True);
+- публичный метод get_time() для получения текущего времени из приватной локальной переменной time;
+- приватный метод класса check_time(tm) для проверки корректности времени в переменной tm
+(возвращает True, если значение корректно и False - в противном случае).
+Проверка корректности выполняется по критерию: tm должна быть целым числом, больше или равна
+нулю и меньше 100 000.
+Объекты класса Clock предполагается использовать командой: clock = Clock(время)
+Создайте объекты clock и clock2 класса Clock и установите время, равным 4530 и 145300 соответственно.
+Выведите значение времени обоих объектов на экран.
+Пример ввода:
+Пример вывода:
+4530
+0
+'''
+class Clock:
+    def __init__(self, time=0):
+        self.__time = 0
+    def set_time(self, tm):
+        if self.__private_check_time(tm):
+            self.__time = tm
+    def get_time(self):
+        return self.__time
+    def __private_check_time(self, tm):
+        try:
+            return 0 <= int(tm) < 100_000
+        except:
+            return False
+
+
+clock = Clock()
+clock.set_time(4530)
+print(clock.get_time())
+
+clock2 = Clock()
+clock2.set_time(145300)
+print(clock2.get_time())
+
