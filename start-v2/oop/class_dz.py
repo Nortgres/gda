@@ -657,4 +657,3 @@ print(clock.get_time())
 clock2 = Clock()
 clock2.set_time(145300)
 print(clock2.get_time())
-
