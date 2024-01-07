@@ -147,6 +147,6 @@ class NoteBook(Goods, MixinLog):
 
 
 n = NoteBook("Aser", 1.5, 30000)
-n.print_info()
-n.save_shell_log()
+#n.print_info()
+#n.save_shell_log()
 print(NoteBook.__mro__) # распечатать цепочку наследования
