@@ -130,6 +130,7 @@ s[0] = 10.5
 Пример вывода 2:
 TypeError: можно передавать только целочисленные значения
 '''
+'''
 class ListInteger(list):
     def __init__(self, x):
         self.__check_values(x)
@@ -157,3 +158,63 @@ s[1] = 10
 s.append(11)
 print(s)
 #s[0] = 10.5
+'''
+'''
+Задание 2.4. Известно, что с объектами класса tuple можно складывать только такие же объекты:
+t1 = (1, 2, 3)
+t2 = t1 + (4, 5) # (1, 2, 3, 4, 5)
+Если же мы попытаемся прибавить любой другой итерируемый объект, например, список:
+t2 = t1 + [4, 5], то возникнет ошибка. Предлагается поправить этот функционал и создать свой
+собственный класс Tuple, унаследованный от базового класса tuple и поддерживающий оператор «+»:
+t1 = Tuple(iter_obj)
+t2 = t1 + iter_obj # создается новый объект класса Tuple с новым (соединенным) набором данных
+где iter_obj - любой итерируемый объект (список, словарь, строка, множество, кортеж и т.п.)
+Пример входных данных:
+t = Tuple([1, 2, 3])
+t = t + "Python"
+print(t)
+t = t + {5, 8}
+print(t)
+Пример вывода:
+(1, 2, 3, 'P', 'y', 't', 'h', 'o', 'n')
+(1, 2, 3, 'P', 'y', 't', 'h', 'o', 'n', 8, 5)
+'''
+
+
+#class Tuple(tuple):
+#    def __init__(self, seq=()):
+#        super().__init__(seq)
+
+    #def add(self, other):
+    #    if isinstance(other, (list, tuple, set, str)):
+    #        return Tuple(self + Tuple(other))
+    #    else:
+    #        raise TypeError("unsupported operand type(s) for +: 'Tuple' and '{}'".format(type(other).__name__))
+
+
+#t = Tuple([1, 2, 3])
+#t = t + "Python"
+#print(t)
+# t = t + {5, 8}
+#print(t)
+
+
+'''
+Задание 2.5. Объявите класс SoftList, который наследуется от стандартного класса list. В
+классе SoftList следует объявить необходимый магический метод так, чтобы при обращении
+к несуществующему элементу (по индексу) возвращалось значение False (а не исключение
+Out of Range).
+Пример входных данных:
+sl = SoftList("python")
+print(sl[0])
+print(sl[-1])
+print(sl[6])
+print(sl[-7])
+Пример вывода:
+p n
+False
+False
+'''
+class SoftList(list):
+    def __init__(self, x):
+        super().__init__(x)
