@@ -86,7 +86,6 @@ class Thing:
     id = 0
 
     def __init__(self, name, price):
-        super().__init__()
         self.id = Thing.id
         Thing.id += 1
         self.name = name
@@ -131,6 +130,7 @@ s[0] = 10.5
 TypeError: можно передавать только целочисленные значения
 '''
 '''
+# Задание 2.3.
 class ListInteger(list):
     def __init__(self, x):
         self.__check_values(x)
@@ -180,24 +180,23 @@ print(t)
 (1, 2, 3, 'P', 'y', 't', 'h', 'o', 'n', 8, 5)
 '''
 
+'''
+class Tuple(tuple):
 
-#class Tuple(tuple):
-#    def __init__(self, seq=()):
-#        super().__init__(seq)
 
-    #def add(self, other):
-    #    if isinstance(other, (list, tuple, set, str)):
-    #        return Tuple(self + Tuple(other))
-    #    else:
-    #        raise TypeError("unsupported operand type(s) for +: 'Tuple' and '{}'".format(type(other).__name__))
+    def __add__(self, other):
+        if isinstance(other, (list, tuple, set, str)):
+            return Tuple(self + Tuple(other))
+        #else:
+        #    raise TypeError("unsupported operand type(s) for +: 'Tuple' and '{}'".format(type(other).__name__))
 
 
 #t = Tuple([1, 2, 3])
 #t = t + "Python"
 #print(t)
-# t = t + {5, 8}
+#t = t + {5, 8}
 #print(t)
-
+'''
 
 '''
 Задание 2.5. Объявите класс SoftList, который наследуется от стандартного класса list. В
@@ -215,6 +214,17 @@ p n
 False
 False
 '''
+# Задание 2.5.
 class SoftList(list):
-    def __init__(self, x):
-        super().__init__(x)
+
+    def __getitem__(self, index):
+        try:
+            return super().__getitem__(index)
+        except:
+            return False
+
+sl = SoftList("python")
+print(sl[0])
+print(sl[-1])
+print(sl[6])
+print(sl[-7])

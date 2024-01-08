@@ -46,3 +46,12 @@ thing3 = PhysicalThing('Книга', 1000.0, 0.5, (20.0, 15.0, 3.0))
 print(thing3.id)
 thing4 = PhysicalThing('Книга', 1000.0, 0.5, (20.0, 15.0, 3.0))
 print(thing4.id)
+
+'''
+def __init__(self, initial_values):
+        for val in initial_values:
+            if not isinstance(val, int):
+                raise TypeError('можно передавать только целочисленные значения')
+            super().__init__(initial_values)
+как вариант
+'''
