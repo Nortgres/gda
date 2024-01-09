@@ -214,6 +214,23 @@ p n
 False
 False
 '''
+'''
+Задание 2.5. Объявите класс SoftList, который наследуется от стандартного класса list. В
+классе SoftList следует объявить необходимый магический метод так, чтобы при обращении
+к несуществующему элементу (по индексу) возвращалось значение False (а не исключение
+Out of Range).
+Пример входных данных:
+sl = SoftList("python")
+print(sl[0])
+print(sl[-1])
+print(sl[6])
+print(sl[-7])
+Пример вывода:
+p n
+False
+False
+'''
+'''
 # Задание 2.5.
 class SoftList(list):
 
@@ -228,3 +245,173 @@ print(sl[0])
 print(sl[-1])
 print(sl[6])
 print(sl[-7])
+'''
+'''
+Задание 2.6. Объявите в программе базовый класс с именем Book, объекты которого создаются
+командой: book = Book(title, author, pages, year), где title - заголовок книги (строка); author - автор
+книги (строка); pages - число страниц (целое число); year - год издания (целое число). В каждом объекте
+класса Book должны формироваться соответствующие локальные атрибуты: title, author, pages, year.
+Объявите дочерний класс DigitBook от класса Book, объекты которого создаются командой:
+db = DigitBook(title, author, pages, year, size, frm), где дополнительные параметры size -
+размер книги в байтах (целое число); frm - формат книги (строка: 'pdf', 'doc', 'fb2', 'txt'). В каждом объекте
+класса DigitBook должны формироваться соответствующие локальные атрибуты: title, author, pages, year,
+size, frm. Инициализация локальных атрибутов title, author, pages, year должна выполняться в базовом
+классе Book, а параметры size, frm инициализируются
+в дочернем классе DigitBook.
+Пример входных данных:
+book1 = Book('Евгений Онегин', 'Пушкин', 650, 1830)
+book2 = DigitBook('Борис Годунов ', 'Пушкин', 777, 1825, 1024, 'fb2')
+data = lambda obj: [print(f'{key:6} --> {value}') for key, valuein obj.__dict__.items()]
+data(book1)
+print('*' * 25)
+data(book2)
+Пример вывода:
+title --> Евгений Онегин
+author --> Пушкин
+pages --> 650
+year --> 1830
+*************************
+title --> Борис Годунов
+author --> Пушкин
+pages --> 777
+year --> 1825
+size --> 1024
+frm --> fb2
+'''
+'''
+class Book:
+    def __init__(self, title, author, pages, year):
+        self.title = title
+        self.author = author
+        self.pages = pages
+        self.year = year
+class DigitBook(Book):
+    def __init__(self, title, author, pages, year, size, frm):
+        super().__init__(title, author, pages, year)
+        self.size = size
+        self.frm = frm
+
+book1 = Book('Евгений Онегин', 'Пушкин', 650, 1830)
+book2 = DigitBook('Борис Годунов ', 'Пушкин', 777, 1825, 1024, 'fb2')
+data = lambda obj: [print(f'{key:6} --> {value}') for key, value in obj.__dict__.items()]
+data(book1)
+print('*' * 25)
+data(book2)
+'''
+'''
+Задание 2.7. Вам поручено организовать представление объектов для продажи в риэлтерских
+агентствах. Для этого в программе нужно объявить базовый класс SellItem, объекты которого создаются
+командой: item = SellItem(name, price)
+где name - название объекта продажи (строка); price - цена продажи (число: целое или вещественное).
+Каждые конкретные типы объектов описываются следующими классами, унаследованные от базового
+SellItem:
+House - дома;
+Flat - квартиры;
+Land - земельные участки.
+Объекты этих классов создаются командами:
+house = House(name, price, material, square)
+flat = Flat(name, price, size, rooms)
+land = Land(name, price, square)
+В каждом объекте этих классов должны формироваться соответствующие локальные атрибуты: name,
+price и т.д. Формирование атрибутов name и price должно выполняться в инициализаторе базового класса.
+Далее, объявить еще один класс с именем Agency, объекты которого создаются командой:
+ag = Agency(name)
+где name - название агентства (строка).
+В классе Agency объявить следующие методы:
+add_object(obj) - добавление нового объекта недвижимости для продажи (один из объектов классов:
+House, Flat, Land);
+remove_object(obj) - удаление объекта obj из списка объектов для продажи;
+get_objects() - возвращает список из всех объектов для продажи.
+Пример входных данных:
+ag = Agency("Рога и копыта")
+ag.add_object(Flat("квартира, 3к", 10000000, 121.5, 3))
+ag.add_object(Flat("квартира, 2к", 8000000, 74.5, 2))
+ag.add_object(Flat("квартира, 1к", 4000000, 54, 1))
+ag.add_object(House("дом, крипичный", price=35000000,
+material="кирпич", square=186.5))
+ag.add_object(Land("участок под застройку", 3000000, 6.74))
+for obj in ag.get_objects():
+print(obj.name)
+Пример вывода:
+квартира, 3к
+квартира, 2к
+квартира, 1к
+дом, крипичный
+участок под застройкуЗадания к разделу 2.
+'''
+'''
+class SellItem:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+class House(SellItem):
+    def __init__(self, name, price, material, square):
+        super().__init__(name, price)
+        self.material = material
+        self.square = square
+class Flat(SellItem):
+    def __init__(self, name, price, size, rooms):
+        super().__init__(name, price)
+        self.size = size
+        self.rooms = rooms
+class Land(SellItem):
+    def __init__(self, name, price, squar):
+        super().__init__(name, price)
+        self.squar = squar
+class Agency:
+    def __init__(self, name):
+        self.name = name
+        self.objects = []
+
+    def add_object(self, obj):
+        if isinstance(obj, SellItem):
+            self.objects.append(obj)
+        else:
+            raise TypeError("неправильный тип объекта")
+    def remove_object(self, name):
+        for i in self.objects:
+            if i.name == name:
+                self.objects.remove(i)
+                return
+        raise ValueError("нет объекта с таким именем")
+    def get_objects(self):
+        return self.objects
+
+ag = Agency("Рога и копыта")
+ag.add_object(Flat("квартира, 3к", 10000000, 121.5, 3))
+ag.add_object(Flat("квартира, 2к", 8000000, 74.5, 2))
+ag.add_object(Flat("квартира, 1к", 4000000, 54, 1))
+ag.add_object(House("дом, крипичный", price=35000000, material="кирпич", square=186.5))
+ag.add_object(Land("участок под застройку", 3000000, 6.74))
+
+for obj in ag.get_objects():
+    print(obj.name)
+print(ag.objects[2].name)
+ag.remove_object("квартира, 1к")
+print(ag.objects[2].name)
+### не указано по какому признаку идёт удаление объекта.
+'''
+'''
+Задание 2.8. Объявите класс с именем Food (еда), объекты которого создаются командой:
+food = Food(name, weight, calories), где name - название продукта (строка); weight - вес продукта (любое
+положительное число); calories - калорийная ценность продукта (целое положительное число).
+Объявите следующие дочерние классы с именами: BreadFood - хлеб; SoupFood - суп; FishFood - рыба.
+Объекты этих классов должны создаваться командами:
+bf = BreadFood(name, weight, calories, white) # white - True для белого хлеба, False - для остальных
+sf = SoupFood(name, weight, calories, dietary) # dietary - True для диетического супа, False - для других
+ff = FishFood(name, weight, calories, fish) # fish - вид рыбы (семга, окунь, сардина и т.д.)
+В каждом объекте этих дочерних классов должны формироваться соответствующие локальные атрибуты:
+BreadFood: _name, _weight, _calories, _white
+SoupFood: _name, _weight, _calories, _dietary
+FishFood: _name, _weight, _calories, _fish
+Пример входных данных:
+bf = BreadFood("Бородинский хлеб", 34.5, 512, False)
+sf = SoupFood("Черепаший суп", 520, 890.5, False)
+ff = FishFood("Консерва рыбная", 340, 1200, "семга")
+for obj in (bf, sf, ff):
+print(obj.get_data())
+Пример вывода:
+Бородинский хлеб
+Черепаший суп
+Консерва рыбная
+'''
