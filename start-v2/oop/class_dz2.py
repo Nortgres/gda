@@ -415,3 +415,63 @@ print(obj.get_data())
 Черепаший суп
 Консерва рыбная
 '''
+'''
+class Food:
+    def __init__(self, name, weight, calories):
+        self._name = name
+        self._weight = weight
+        self._calories = calories
+    def get_data(self):
+        return self._name
+
+class BreadFood(Food):
+    def __init__(self, name, weight, calories, white):
+        super().__init__(name, weight, calories)
+        self._white = white
+
+    def get_data(self):
+        return self._name
+
+
+class SoupFood(Food):
+    def __init__(self, name, weight, calories, dietary):
+        super().__init__(name, weight, calories)
+        self._dietary = dietary
+    def get_data(self):
+        return self._name
+
+
+class FishFood(Food):
+    def __init__(self, name, weight, calories, fish):
+        super().__init__(name, weight, calories)
+        self._fish = fish
+    def get_data(self):
+        return self._name
+
+bf = BreadFood("Бородинский хлеб", 34.5, 512, False)
+sf = SoupFood("Черепаший суп", 520, 890.5, False)
+ff = FishFood("Консерва рыбная", 340, 1200, "семга")
+for obj in (bf, sf, ff):
+    print(obj.get_data())
+'''
+'''
+Задание 2.9. Необходимо объявить базовый класс ShopInterface с абстрактным методом: get_id(self)
+В самом методе должно генерироваться исключение командой:
+raise NotImplementedError('в классе не переопределен метод get_id')
+Инициализатор в классе ShopInterface прописывать не нужно. Далее объявите дочерний класс ShopItem
+(от базового класса ShopInterface), объекты которого создаются командой:
+item = ShopItem(name, weight, price), где name - название товара (строка); weight - вес товара (любое
+положительное число); price - цена товара (любое положительное число).
+В каждом объекте класса ShopItem должны формироваться локальные атрибуты с именами _name,
+_weight, _price и соответствующими значениями. Также в объектах класса ShopItem должен
+автоматически формироваться локальный приватный атрибут __id с уникальным (для каждого товара)
+целым значением. В классе ShopItem необходимо переопределить метод get_id() базового класса так,
+чтобы он (метод) возвращал значение атрибута __id.
+Пример входных данных:
+item1 = ShopItem("майка", 200, 1200)
+item2 = ShopItem("толстовка", 500, 1900)
+print(item1.get_id())
+print(item2.get_id())
+Пример вывода:
+1 2
+'''
