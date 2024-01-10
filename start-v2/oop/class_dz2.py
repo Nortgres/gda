@@ -179,25 +179,17 @@ print(t)
 (1, 2, 3, 'P', 'y', 't', 'h', 'o', 'n')
 (1, 2, 3, 'P', 'y', 't', 'h', 'o', 'n', 8, 5)
 '''
-
 '''
 class Tuple(tuple):
-
-
     def __add__(self, other):
-        if isinstance(other, (list, tuple, set, str)):
-            return Tuple(self + Tuple(other))
-        #else:
-        #    raise TypeError("unsupported operand type(s) for +: 'Tuple' and '{}'".format(type(other).__name__))
+        return Tuple(super().__add__(tuple(other)))
 
-
-#t = Tuple([1, 2, 3])
-#t = t + "Python"
-#print(t)
-#t = t + {5, 8}
-#print(t)
+t = Tuple([1, 2, 3])
+t = t + "Python"
+print(t)
+t = t + {5, 8}
+print(t)
 '''
-
 '''
 Задание 2.5. Объявите класс SoftList, который наследуется от стандартного класса list. В
 классе SoftList следует объявить необходимый магический метод так, чтобы при обращении
@@ -533,7 +525,7 @@ print(obj.value)
 999999.9
 8333333333.2
 '''
-
+'''
 class Digit:
     def __init__(self, value):
         if not isinstance(value, (int, float)):
@@ -570,9 +562,12 @@ class FloatPositive(Float, Positive):
     pass
 
 digits = [PrimeNumber(17), PrimeNumber(7), PrimeNumber(229),
-          FloatPositive(.258), FloatPositive(.432), FloatPositive(1.0),
-          FloatPositive(999999.9), FloatPositive(8333333333.2), ]
+FloatPositive(.258), FloatPositive(.432), FloatPositive(1.0),
+FloatPositive(999999.9), FloatPositive(8333333333.2)]
 lst_positive = list(filter(lambda x: isinstance(x, Positive), digits))
 lst_float = list(filter(lambda x: isinstance(x, Float), digits))
 for obj in lst_float:
     print(obj.value)
+for obj in lst_positive:
+    print(obj.value)
+'''
