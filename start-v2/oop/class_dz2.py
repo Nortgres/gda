@@ -83,11 +83,7 @@ print(*book.get_data())
 '''
 '''
 class Thing:
-    id = 0
 
-    def __init__(self, name, price):
-        self.id = Thing.id
-        Thing.id += 1
         self.name = name
         self.price = price
         self.weight = None
@@ -99,7 +95,11 @@ class Thing:
 
 class Table(Thing):
     def __init__(self, name, price, weight, dims):
-        super().__init__(name, price)
+        super().__init__(name, price)    id = 0
+
+    def __init__(self, name, price):
+        self.id = Thing.id
+        Thing.id += 1
         self.weight = weight
         self.dims = dims
 class ElBook(Thing):
@@ -475,3 +475,104 @@ print(item2.get_id())
 Пример вывода:
 1 2
 '''
+'''
+class ShopInterface:
+    def get_id(self):
+        raise NotImplementedError('в классе не переопределен метод get_id')
+class ShopItem(ShopInterface):
+    id = 1
+    def __init__(self, name, weight, price):
+        self._name = name
+        self._weight = weight
+        self._price = price
+        self.__id = ShopItem.id
+        ShopItem.id += 1
+    def get_id(self):
+        return self.__id
+
+item1 = ShopItem("майка", 200, 1200)
+item2 = ShopItem("толстовка", 500, 1900)
+print(item1.get_id())
+print(item2.get_id())
+'''
+'''
+Задание 2.10. С помощью множественного наследования удобно описывать принадлежность объектов
+к нескольким разным группам. Определите в программе классы в соответствии с их иерархией,
+представленной на рисунке:
+Каждый объект этих классов должен создаваться однотипной командой вида: obj = Имя_класса(value)
+где value - числовое значение. В каждом классе следует делать свою проверку на корректность значения
+value:
+- в классе Digit: value - любое число;
+- в классе Integer: value - целое число;
+- в классе Float: value - вещественное число;
+- в классе Positive: value - положительное число;
+- в классе Negative: value - отрицательное число.
+Если проверка не проходит, то генерируется исключение командой:
+raise TypeError('значение не соответствует типу объекта')
+После этого объявите следующие дочерние классы:
+PrimeNumber - простые числа; наследуется от классов Integer и Positive;
+FloatPositive - наследуется от классов Float и Positive.
+Создайте три объекта класса PrimeNumber и пять объектов класса FloatPositive с
+произвольными допустимыми для них значениями. Сохраните все эти объекты в виде списка digits.
+Затем, используя функции isinstance() и filter(), сформируйте следующие списки из указанных объектов:
+lst_positive - все объекты, относящиеся к классу Positive;
+lst_float - все объекты, относящиеся к классу Float.
+Выведите элементы из списка lst_float на экран.
+Пример входных данных:
+digits = [PrimeNumber(17), PrimeNumber(7), PrimeNumber(229),
+FloatPositive(.258), FloatPositive(.432), FloatPositive(1.0),
+FloatPositive(999999.9), FloatPositive(8333333333.2)]
+lst_positive = list(filter(lambda x: isinstance(x, Positive), digits))
+lst_float = list(filter(lambda x: isinstance(x, Float), digits))
+for obj in lst_float:
+print(obj.value)
+Пример вывода:
+0.258
+0.432
+1.0
+999999.9
+8333333333.2
+'''
+
+class Digit:
+    def __init__(self, value):
+        if not isinstance(value, (int, float)):
+            raise TypeError('значение не соответствует типу объекта')
+        self.value = value
+class Integer(Digit):
+    def __init__(self, value):
+        if not isinstance(value, int):
+            raise TypeError('значение не соответствует типу объекта')
+        self.value = value
+class Float(Digit):
+    def __init__(self, value):
+        if not isinstance(value, float):
+            raise TypeError('значение не соответствует типу объекта')
+        self.value = value
+
+class Positive(Digit):
+    def __init__(self, value):
+        if not (isinstance(value, (int, float)) and value > 0):
+            raise TypeError('значение не соответствует типу объекта')
+        self.value = value
+class Negative(Digit):
+    def __init__(self, value):
+        if not (isinstance(value, (int, float)) and value < 0):
+            raise TypeError('значение не соответствует типу объекта')
+        self.value = value
+class PrimeNumber(Integer, Positive):
+    def __init__(self, value):
+        for i in range(2, value):
+            if value % i == 0:
+                raise TypeError('значение не соответствует типу объекта')
+        self.value = value
+class FloatPositive(Float, Positive):
+    pass
+
+digits = [PrimeNumber(17), PrimeNumber(7), PrimeNumber(229),
+          FloatPositive(.258), FloatPositive(.432), FloatPositive(1.0),
+          FloatPositive(999999.9), FloatPositive(8333333333.2), ]
+lst_positive = list(filter(lambda x: isinstance(x, Positive), digits))
+lst_float = list(filter(lambda x: isinstance(x, Float), digits))
+for obj in lst_float:
+    print(obj.value)
